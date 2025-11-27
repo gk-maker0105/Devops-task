@@ -6,7 +6,10 @@ COPY package*.json ./
 RUN npm install
 
 COPY . .
-RUN npm run build -- --configuration production
+
+# Force clean build - remove .angular cache
+RUN rm -rf .angular
+RUN npm run build -- --configuration production --output-hashing=all
 
 FROM nginx:alpine
 
