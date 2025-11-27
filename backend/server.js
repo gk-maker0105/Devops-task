@@ -1,8 +1,13 @@
 const express = require("express");
-//const cors = require("cors");
+const cors = require("cors");
 
 const app = express();
-
+const corsOptions = {
+  origin: ['https://super-adventure-4j659gp47756fw7p-4200.app.github.dev'],
+  credentials: true,
+  optionsSuccessStatus: 200
+};
+app.use(cors(corsOptions));
 // parse requests of content-type - application/json
 app.use(express.json());
 
